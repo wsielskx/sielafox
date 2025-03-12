@@ -220,6 +220,7 @@ user_pref("layout.word_select.eat_space_to_next_word", false);
 // visit https://github.com/yokoffing/Betterfox/wiki/Common-Overrides
 // visit https://github.com/yokoffing/Betterfox/wiki/Optional-Hardening
 // Enter your personal overrides below this line:
+user_pref("extensions.formautofill.addresses.enabled", true);
 
 /****************************************************************************
  * SECTION: SMOOTHFOX                                                       *
@@ -230,3 +231,17 @@ user_pref("layout.word_select.eat_space_to_next_word", false);
 /****************************************************************************
  * END: BETTERFOX                                                           *
 ****************************************************************************/
+
+/****************************************************************************
+ * SECTION: SIDEBERRY                                                       *
+****************************************************************************/
+user_pref("svg.context-properties.content.enabled", true);
+user_pref("layout.css.has-selector.enabled", true);
+user_pref("browser.urlbar.trimURLs", true);
+user_pref("widget.gtk.rounded-bottom-corners.enabled", true);
+user_pref("widget.gtk.ignore-bogus-leave-notify", 1);
+user_pref("browser.tabs.allow_transparent_browser", true);
+user_pref("browser.uidensity", 1);
+user_pref("widget.macos.titlebar-blend-mode.behind-window", true);
+user_pref("sidebar.revamp", false);
+user_pref("sidebar.verticalTabs", false);
