@@ -35,10 +35,10 @@
   /* sidebar vars */
   --uc-sidebar-hover-width: 170px;
   @media (-moz-bool-pref: "uc.tweak.sidebar.short") {
-    --uc-sidebar-hover-width: 140px;
+    --uc-sidebar-hover-width: 200px;
   }
   @media (-moz-bool-pref: "uc.tweak.sidebar.wide") {
-    --uc-sidebar-hover-width: 200px;
+    --uc-sidebar-hover-width: 270px;
   }
 
   --uc-sidebar-width: 34px;

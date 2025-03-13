@@ -245,3 +245,4 @@ user_pref("browser.uidensity", 1);
 user_pref("widget.macos.titlebar-blend-mode.behind-window", true);
 user_pref("sidebar.revamp", false);
 user_pref("sidebar.verticalTabs", false);
+user_pref("uc.tweak.sidebar.wide", true);
