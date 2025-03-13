@@ -29,7 +29,6 @@
   border-radius: var(--uc-button-radius) !important;
   border: none !important;
   box-shadow: none !important;
-  background: transparent !important;
 }
 
 #urlbar[breakout-extend] #urlbar-background {
