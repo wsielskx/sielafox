@@ -248,3 +248,4 @@ user_pref("uc.tweak.sidebar.wide", true);
 user_pref("uc.tweak.borderless", true);
 user_pref("uc.tweak.borderless.no-round", true);
 user_pref("uc.tweak.theme.sidebery", true);
+user_pref("browser.tabs.allow_transparent_browser", false);
