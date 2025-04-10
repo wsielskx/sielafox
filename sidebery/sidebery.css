@@ -1,247 +1,312 @@
+/* === ROOT SETTINGS === */
 #root.root {
     --tabs-activated-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.282), inset 0 0 0 1px rgb(165, 92, 251), inset 4px 0 0 0 #f388ffff;
     --tabs-border-radius: 5px;
     --tabs-activated-fg: #f388ffff;
     --tabs-activated-bg: #2a2a41ff;
     --tabs-height: 28px;
+    --tabs-pinned-height: 40px;
     --pin-favicon-size: 24px;
     --nav-btn-width: 40px;
     --nav-btn-height: 40px;
     --nav-btn-accent: #EC4346;
     padding: 10px 0;
-}
-
-.TabsPanel {
+  }
+  
+  #root .Tab {
+    --tabs-indent: 25px;
+  }
+  
+  .TabsPanel {
     display: flex;
     gap: 12px;
-}
-
-.Tab .title {
-    font-size: 14px;
-}
-
-
-/*--Bolds the active tab text--*/
-.Tab[data-active="true"] .title {
-    font-weight: bold;
-    font-size: 14px;
-    color: var(--tabs-normal-fg);
-}
-
-.Tab[data-active="true"] .body {
-    box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.282),
-        inset 0 0 0 1px var(--color, var(--tabs-normal-fg)),
-        inset 4px 0 0 0 var(--color, var(--tabs-normal-fg)),
-        inset -3px 0 0 0 var(--color, var(--tabs-normal-fg));
-
-}
-
-.Tab[data-active="true"] .ctx {
-    display: none;
-}
-
-#root {
-    /* Tab and PinnedTab height adjustment */
-    --tabs-height: 33px;
-    --tabs-pinned-height: var(--tabs-height);
-    /* Light Theme base settings */
-}
-
-#root .Tab {
-    --tabs-indent: 25px;
-}
-
-/* TABS */
-
-.Tab .lvl-wrapper:after {
-    display: none;
-}
-
-.Tab {
-    margin: auto;
+  }
+  
+  /* === TABS === */
+  .Tab {
+    margin: 0;
     width: 94%;
     border-radius: 3px;
-}
-
-.Tab .close>svg:hover {
-    /* Styling the tab close button */
+    padding-bottom: 0;
+  }
+  
+  .Tab[data-lvl="0"] {
+    --tab-indent: 5px;
+    padding-left: 5px;
+  }
+  
+  .Tab[data-lvl="1"] {
+    --tab-indent: var(--tabs-indent);
+  }
+  
+  .Tab[data-lvl="2"] {
+    --tab-indent: calc(var(--tabs-indent) * 2)
+  }
+  
+  .Tab[data-lvl="3"] {
+    --tab-indent: calc(var(--tabs-indent) * 3)
+  }
+  
+  .Tab[data-lvl="4"] {
+    --tab-indent: calc(var(--tabs-indent) * 4)
+  }
+  
+  .Tab[data-lvl="5"] {
+    --tab-indent: calc(var(--tabs-indent) * 5)
+  }
+  
+  .Tab[data-lvl="6"] {
+    --tab-indent: calc(var(--tabs-indent) * 6)
+  }
+  
+  .Tab[data-lvl="7"] {
+    --tab-indent: calc(var(--tabs-indent) * 7)
+  }
+  
+  .Tab[data-lvl="8"] {
+    --tab-indent: calc(var(--tabs-indent) * 8)
+  }
+  
+  .Tab[data-lvl="9"] {
+    --tab-indent: calc(var(--tabs-indent) * 9)
+  }
+  
+  .Tab[data-lvl="10"] {
+    --tab-indent: calc(var(--tabs-indent) * 10)
+  }
+  
+  .Tab[data-lvl="11"] {
+    --tab-indent: calc(var(--tabs-indent) * 11)
+  }
+  
+  .Tab[data-lvl="12"] {
+    --tab-indent: calc(var(--tabs-indent) * 12)
+  }
+  
+  .Tab[data-lvl="13"] {
+    --tab-indent: calc(var(--tabs-indent) * 13)
+  }
+  
+  .Tab[data-lvl="14"] {
+    --tab-indent: calc(var(--tabs-indent) * 14)
+  }
+  
+  .Tab[data-lvl="15"] {
+    --tab-indent: calc(var(--tabs-indent) * 15)
+  }
+  
+  .Tab .lvl-wrapper:after {
+    display: none;
+  }
+  
+  .Tab .title {
+    font-size: 14px;
+    overflow: hidden !important;
+    padding-left: 5px;
+  }
+  
+  .Tab .fav {
+    order: 0;
+  }
+  
+  .Tab .close {
+    right: px;
+  }
+  
+  .Tab .close > svg:hover {
     border-radius: 3px;
     background: var(--warn) !important;
     opacity: 80%;
-}
-
-.Tab .title {
-    overflow: hidden !important;
-}
-
-/* PINNED TABS */
-
-.PinnedDock {
+  }
+  
+  /* --Bolds the active tab text-- */
+  .Tab[data-active="true"] .title {
+    font-weight: bold;
+    font-size: 14px;
+    color: var(--tabs-normal-fg);
+  }
+  
+  .Tab[data-active="true"] .body {
+    box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.282),
+    inset 0 0 0 1px var(--color, var(--tabs-normal-fg)),
+    inset 4px 0 0 0 var(--color, var(--tabs-normal-fg)),
+    inset -3px 0 0 0 var(--color, var(--tabs-normal-fg));
+  }
+  
+  .Tab[data-pin="false"][data-active="true"] .audio-icon,
+  .Tab[data-pin="false"][data-active="true"] .closebrow-icon {
+    fill: var(--color, var(--tabs-normal-fg));
+  }
+  
+  .Tab[data-active="true"] .ctx {
+    display: none;
+  }
+  
+  /* === PINNED TABS === */
+  .PinnedDock {
     background-color: var(--bg) !important;
-}
-
-.PinnedTab {
+  }
+  
+  .PinnedTab {
     margin: 5px 0px 4px 6px;
     border-radius: 3px;
-}
-
-/* NAV BAR */
-
-
-/* SIDEBAR HACK PATCHES */
-
-@media (max-width: 50px) {
-
-    /* Fix to tab tree identation when minimised */
-    #root:not(:hover) .Tab {
-        --tabs-indent: 0;
-    }
-
-    .Tab[data-lvl]>div.lvl-wrapper {
-        right: -2px;
-    }
-
-    .Tab {
-        max-width: 34px;
-    }
-
-    .Tab .fav {
-        z-index: 1;
-    }
-
-    .Tab .audio {
-        z-index: 1;
-        margin-left: -12px;
-        height: 26px;
-    }
-
-    .Tab .title {
-        display: none;
-    }
-
-    .PinnedTab {
-        margin-left: 5px;
-    }
-
-    .NavigationBar .settings-btn {
-        display: none;
-    }
-}
-
-.Tab .fav {
-    order: 0;
-}
-
-
-.Tab .title {
-    padding-left: 5px;
-}
-
-.Tab .close {
-    right: px;
-}
-
-.Tab[data-discarded="true"] .body {
-    opacity: 0.37;
-}
-
-.Tab[data-discarded="true"]>.body>.fav,
-.Tab[data-discarded="true"]>.body>.t-box {
-    opacity: 1;
-}
-
-.Tab[data-discarded="true"] .title {
-    color: rgba(255, 255, 255, 0.55);
-}
-
-.Tab[data-unread="true"] .title {
-    font-style: italic;
-}
-
-.NavigationBar .main-items .nav-item[data-index="-1"]:not([data-active="true"]),
-.NavigationBar:not(:has(.nav-item:not([data-index="-1"]))) .static-btns {
-    display: none !important;
-}
-
-@media (max-width: 66px) {
-    .NavigationBar .static-btns {
-        display: none !important;
-    }
-}
-
-.NavigationBar[data-layout="inline"] .main-items {
-    justify-content: center;
-    gap: 16px;
-}
-
-.NavigationBar[data-layout="inline"] .main-items .nav-item {
-    position: relative;
-    transform: none !important;
-    cursor: pointer;
-}
-
-.NavigationBar[data-layout="inline"] .main-items .nav-item .icon {
-    width: 24px;
-    height: 24px;
-}
-
-.NavigationBar[data-layout="inline"] .main-items .nav-item .badge {
-    top: unset;
-    bottom: 2px;
-    left: 50%;
-    transform: scale(.7, .7) translateX(-50%);
-}
-
-.NavigationBar .main-items .nav-item[data-index="-1"] {
-    opacity: 1 !important;
-    z-index: 1 !important;
-    transform: scale(1, 1) !important;
-}
-
-.top-horizontal-box {
-    order: 100 !important;
-    margin-bottom: var(--tabs-margin) !important;
-}
-
-.NavigationBar.-top .hidden-panels-popup {
-    position: absolute !important;
-    margin-top: -1000px !important;
-    top: auto !important;
-    bottom: 36px !important;
-
-}
-
-.NavigationBar.-top .hidden-panels-popup-layer::before {
-    display: none !important;
-    background-color: transparent !important;
-}
-
-/* PINNED TABS */
-
-.Tab[data-pin="true"] .body {
+  }
+  
+  .Tab[data-pin="true"] .body {
     box-shadow: 0px 2px 1px #00000000;
     background: #f2f2f220;
     color: #ffffff60;
-}
-
-.Tab[data-pin="true"][data-active="true"] {
+  }
+  
+  .Tab[data-pin="true"][data-active="true"] {
     background-color: #ffffff40;
     border-radius: calc(var(--general-border-radius) + 2px);
-}
-
-.Tab[data-discarded="true"]>.body>.fav {
-    opacity: 1;
-}
-
-#root .TabsPanel .PinnedTabsBar {
+  }
+  
+  #root .TabsPanel .PinnedTabsBar {
     display: flex;
     flex-wrap: wrap;
     margin: 0;
     padding: 0;
-}
-
-.PinnedTabsBar .tab-wrapper {
+  }
+  
+  .PinnedTabsBar .tab-wrapper {
     flex-grow: 1;
     min-width: 55px;
     --tabs-pinned-width: auto;
-}
+  }
+  
+  /* === DISCARDED TABS === */
+  .Tab[data-discarded="true"] .body {
+    opacity: 0.7;
+  }
+  
+  .Tab[data-discarded="true"] > .body > .fav,
+  .Tab[data-discarded="true"] > .body > .t-box {
+    opacity: 1;
+  }
+  
+  .Tab[data-discarded="true"] .title {
+    color: rgba(255, 255, 255, 0.55);
+  }
+  
+  /* === UNREAD TABS === */
+  .Tab[data-unread="true"] .title {
+    font-style: italic;
+  }
+  
+  .Tab[data-pin="false"] .ctx {
+    --colorX: color-mix(in srgb, var(--color) 70%, transparent) 0%;
+    top: 0;
+    left: calc(-1 * var(--tab-indent));
+    right: unset;
+    height: unset;
+    bottom: 0;
+    width: 3px;
+    min-width: 3px;
+    background: linear-gradient(
+      to right,
+      var(--color) 0%,
+      var(--colorX) 60%,
+      transparent 100%
+    );
+    filter: blur(1px);
+  }
+  
+  /* === SIDEBAR HACK PATCHES === */
+  @media (max-width: 50px) {
+    #root:not(:hover) .Tab {
+      --tabs-indent: 0;
+    }
+  
+    .Tab[data-lvl] > .lvl-wrapper {
+      right: -2px;
+    }
+  
+    .Tab {
+      max-width: 34px;
+    }
+  
+    .Tab .fav {
+      z-index: 1;
+    }
+  
+    .Tab .audio {
+      z-index: 1;
+      margin-left: -12px;
+      height: 26px;
+    }
+  
+    .Tab .title {
+      display: none;
+    }
+  
+    .PinnedTab {
+      margin-left: 5px;
+    }
+  
+    .NavigationBar .settings-btn {
+      display: none;
+    }
+  }
+  
+  /* === NAVIGATION BAR === */
+  .NavigationBar .main-items .nav-item[data-index="-1"]:not([data-active="true"]),
+  .NavigationBar:not(:has(.nav-item:not([data-index="-1"]))) .static-btns {
+    display: none !important;
+  }
+  
+  @media (max-width: 66px) {
+    .NavigationBar .static-btns {
+      display: none !important;
+    }
+  }
+  
+  .NavigationBar[data-layout="inline"] .main-items {
+    justify-content: center;
+    gap: 16px;
+  }
+  
+  .NavigationBar[data-layout="inline"] .main-items .nav-item {
+    position: relative;
+    transform: none !important;
+    cursor: pointer;
+  }
+  
+  .NavigationBar[data-layout="inline"] .main-items .nav-item .icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .NavigationBar[data-layout="inline"] .main-items .nav-item .badge {
+    top: unset;
+    bottom: 2px;
+    left: 50%;
+    transform: scale(0.7) translateX(-50%);
+  }
+  
+  .NavigationBar .main-items .nav-item[data-index="-1"] {
+    opacity: 1 !important;
+    z-index: 1 !important;
+    transform: scale(1) !important;
+  }
+  
+  .NavigationBar.-top .hidden-panels-popup {
+    position: absolute !important;
+    margin-top: -1000px !important;
+    top: auto !important;
+    bottom: 36px !important;
+  }
+  
+  .NavigationBar.-top .hidden-panels-popup-layer::before {
+    display: none !important;
+    background-color: transparent !important;
+  }
+  
+  /* === OTHER === */
+  .top-horizontal-box {
+    order: 100 !important;
+    margin-bottom: var(--tabs-margin) !important;
+  }
+  
+  
