@@ -1,0 +1,9 @@
+#urlbar:not([breakout-extend]) {
+    & .urlbar-input-container,
+    & #urlbar-input-container {
+      text-align: center !important;
+      & .urlbar-input-box {
+        transition: none !important;
+      }
+    }
+  }

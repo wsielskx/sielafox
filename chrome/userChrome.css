@@ -3,6 +3,7 @@
 
 @import url("browser/main.css");
 @import url("vars.css");
+@import url("overrides.css");
 
 :root {
   @media not (-moz-bool-pref: "uc.tweak.no-panel-hint") {
