@@ -228,6 +228,90 @@ user_pref("extensions.formautofill.addresses.enabled", true);
 // visit https://github.com/yokoffing/Betterfox/blob/main/Smoothfox.js
 // Enter your scrolling overrides below this line:
 
+user_pref("apz.overscroll.enabled", true); // DEFAULT NON-LINUX
+user_pref("general.smoothScroll", true); // DEFAULT
+user_pref("general.smoothScroll.msdPhysics.continuousMotionMaxDeltaMS", 12);
+user_pref("general.smoothScroll.msdPhysics.enabled", true);
+user_pref("general.smoothScroll.msdPhysics.motionBeginSpringConstant", 600);
+user_pref("general.smoothScroll.msdPhysics.regularSpringConstant", 650);
+user_pref("general.smoothScroll.msdPhysics.slowdownMinDeltaMS", 25);
+user_pref("general.smoothScroll.msdPhysics.slowdownMinDeltaRatio", "2");
+user_pref("general.smoothScroll.msdPhysics.slowdownSpringConstant", 250);
+user_pref("general.smoothScroll.currentVelocityWeighting", "1");
+user_pref("general.smoothScroll.stopDecelerationWeighting", "1");
+user_pref("mousewheel.default.delta_multiplier_y", 300); 
+
+/****************************************************************************
+ * SECTION: Fastfox
+****************************************************************************/
+// DNS Prefetch (wyłączone dla większej prywatności)
+user_pref("network.dns.disablePrefetch", true);
+
+// TCP Fast Open
+user_pref("network.tcp.tcp_fastopen_enable", true);
+
+// HTTP/3 Streams
+user_pref("network.http.http3.max_concurrent_streams", 1000);
+
+// Connection Retry Timeout
+user_pref("network.http.connection-retry-timeout", 0);
+
+// Cache Memory Capacity
+user_pref("browser.cache.memory.capacity", 65536);
+
+// Max Persistent Connections per Server
+user_pref("network.http.max-persistent-connections-per-server", 10);
+
+// Connection Timeout
+user_pref("network.http.connection-timeout", 90);
+
+// Keep-Alive Timeout
+user_pref("network.http.keep-alive.timeout", 90);
+
+// OCSP Timeout
+user_pref("security.OCSP.timeoutMilliseconds.request", 5000);
+
+// OCSP Stapling
+user_pref("security.ssl.enable_ocsp_stapling", true);
+
+// TLS Minimum Version (3 = TLS 1.2)
+user_pref("security.tls.version.min", 3);
+
+// Early Hint Preconnect
+user_pref("network.early-hints.enabled", true);
+
+// Initial Paint Delay
+user_pref("nglayout.initialpaint.delay", 0);
+
+// Content Notify Interval
+user_pref("content.notify.interval", 100000);
+
+// HTTP Response Throttling
+user_pref("network.http.throttle.enable", true);
+
+// HTTP Throttle Suspend-For
+user_pref("network.http.throttle.suspend-for", 200);
+
+/****************************************************************************
+ * SECTION: Securefox                                                       *
+****************************************************************************/
+
+// Partition Network State (Total Cookie Protection)
+user_pref("privacy.partition.network_state", true);
+
+// SSL Safe Negotiation
+user_pref("security.ssl.require_safe_negotiation", true);
+
+// Hide Mozilla Homepage Override
+user_pref("browser.startup.homepage_override.mstone", "ignore");
+
+// Disable Password Autofill
+user_pref("signon.autofillForms", false);
+
+// Disable Crash Report Auto-Submit
+user_pref("browser.crashReports.unsubmittedCheck.autoSubmit2", false);
+
+
 /****************************************************************************
  * END: BETTERFOX                                                           *
 ****************************************************************************/
