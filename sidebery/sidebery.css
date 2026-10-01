@@ -1,20 +1,39 @@
 /* === ROOT SETTINGS === */
 #root.root {
-    --tabs-activated-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.282), inset 0 0 0 1px rgb(165, 92, 251), inset 4px 0 0 0 #f388ffff;
+    /* colors not overridden: with colorScheme="ff" Sidebery derives
+       --tabs-*-bg/fg from the Firefox theme */
     --tabs-border-radius: 5px;
-    --tabs-activated-fg: #f388ffff;
-    --tabs-activated-bg: #2a2a41ff;
-    --tabs-height: 28px;
+    --tabs-height: 30px;
     --tabs-pinned-height: 40px;
     --pin-favicon-size: 24px;
     --nav-btn-width: 40px;
     --nav-btn-height: 40px;
-    --nav-btn-accent: #EC4346;
+    /* force the native sidebar background everywhere: Sidebery paints its
+       panel with the theme toolbar grey, native vertical tabs use the darker
+       frame color (#1c1b22 dark / #f9f9fb light) */
+    --sbg: #f9f9fb;
+    --bg: var(--sbg);
+    --frame-bg: var(--sbg);
+    --toolbar-bg: var(--sbg);
+    background: var(--sbg) !important;
     padding: 10px 0;
+    box-sizing: border-box;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    #root.root {
+      --sbg: #1c1b22;
+    }
   }
   
   #root .Tab {
     --tabs-indent: 25px;
+  }
+  
+  /* phantom scrollbar: .scrollable stretches the scroll-container */
+  #root .scrollable {
+    min-height: unset !important;
+    height: auto !important;
   }
   
   .TabsPanel {
@@ -24,10 +43,34 @@
   
   /* === TABS === */
   .Tab {
-    margin: 0;
-    width: 94%;
+    margin: 2px 0;
+    width: 100%;
     border-radius: 3px;
     padding-bottom: 0;
+  }
+  
+  /* last row's bottom margin overflows the scroll container by 1px
+     and wakes up a phantom scrollbar */
+  .Tab:last-child,
+  .tab-wrapper:last-child .Tab {
+    margin-bottom: 0;
+  }
+  
+  
+  /* pill badge, slimmed to 3px */
+  .Tab[data-pin="false"]:not([data-active="true"]) .ctx {
+    top: 50%;
+    bottom: unset;
+    left: unset;
+    right: 5px;
+    height: 13px;
+    width: 3px;
+    min-width: 3px;
+    margin-top: -6.5px;
+    border-radius: 3px;
+    background: var(--color);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--color) 25%, transparent);
+    filter: none;
   }
   
   .Tab[data-lvl="0"] {
@@ -105,6 +148,11 @@
     padding-left: 5px;
   }
   
+  /* keep text clear of the indicator zone */
+  .Tab[data-pin="false"] .t-box {
+    margin-right: 13px !important;
+  }
+  
   .Tab .fav {
     order: 0;
   }
@@ -127,6 +175,12 @@
   }
   
   .Tab[data-active="true"] .body {
+    /* translucent container tint + colored ring/bars */
+    background-color: color-mix(
+      in srgb,
+      var(--color, var(--tabs-normal-fg)) 16%,
+      transparent
+    );
     box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.282),
     inset 0 0 0 1px var(--color, var(--tabs-normal-fg)),
     inset 4px 0 0 0 var(--color, var(--tabs-normal-fg)),
@@ -153,13 +207,12 @@
   }
   
   .Tab[data-pin="true"] .body {
-    box-shadow: 0px 2px 1px #00000000;
-    background: #f2f2f220;
-    color: #ffffff60;
+    background: color-mix(in srgb, var(--tabs-normal-fg) 12%, transparent);
+    color: color-mix(in srgb, var(--tabs-normal-fg) 40%, transparent);
   }
   
   .Tab[data-pin="true"][data-active="true"] {
-    background-color: #ffffff40;
+    background-color: color-mix(in srgb, var(--tabs-normal-fg) 25%, transparent);
     border-radius: calc(var(--general-border-radius) + 2px);
   }
   
@@ -187,7 +240,7 @@
   }
   
   .Tab[data-discarded="true"] .title {
-    color: rgba(255, 255, 255, 0.55);
+    color: color-mix(in srgb, var(--tabs-normal-fg) 55%, transparent);
   }
   
   /* === UNREAD TABS === */
@@ -195,22 +248,8 @@
     font-style: italic;
   }
   
-  .Tab[data-pin="false"] .ctx {
-    --colorX: color-mix(in srgb, var(--color) 70%, transparent) 0%;
-    top: 0;
-    left: calc(-1 * var(--tab-indent));
-    right: unset;
-    height: unset;
-    bottom: 0;
-    width: 3px;
-    min-width: 3px;
-    background: linear-gradient(
-      to right,
-      var(--color) 0%,
-      var(--colorX) 60%,
-      transparent 100%
-    );
-    filter: blur(1px);
+  .Tab[data-active="true"] .ctx {
+    display: none !important;
   }
   
   /* === SIDEBAR HACK PATCHES === */

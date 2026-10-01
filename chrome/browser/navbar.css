@@ -54,8 +54,22 @@ toolbarspring {
   border-radius: var(--uc-button-radius);
 }
 
-#TabsToolbar {
+/* native tabs hidden unless the "show native tabs" toggle is active
+   (titlepreface U+200D, Userchrome Toggle style 4); zen mode (U+200B) wins.
+   Covers both horizontal (#TabsToolbar) and vertical tabs
+   (sidebar-main / #vertical-tabs, sidebar.verticalTabs=true) */
+:root:not([titlepreface*="‍"])
+  :is(#TabsToolbar, #vertical-tabs, sidebar-main, #sidebar-container),
+:root[titlepreface*="​"]
+  :is(#TabsToolbar, #vertical-tabs, sidebar-main, #sidebar-container) {
   display: none !important;
+}
+@media (-moz-platform: macos) {
+  :root[titlepreface*="‍"]:not([titlepreface*="​"], [sizemode="fullscreen"])
+    #TabsToolbar {
+    /* keep tabs clear of the fixed traffic-light buttons */
+    margin-left: 78px !important;
+  }
 }
 /* navbar hidden */
 #main-window[titlepreface*="​"]:not([inDOMFullscreen="true"]) {

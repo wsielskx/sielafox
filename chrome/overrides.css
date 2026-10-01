@@ -7,3 +7,129 @@
       }
     }
   }
+
+/* sidebar: no header ("Sidebery" + close btn), no borders - native look */
+#sidebar-header,
+sidebar-panel-header,
+.sidebar-panel-header,
+#sidebar-panel-header,
+#sidebar-box .sidebar-panel-header,
+#sidebar-box sidebar-panel-header {
+  display: none !important;
+}
+
+#sidebar-box,
+#sidebar-box #sidebar {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* keep the splitter draggable but invisible */
+#sidebar-splitter {
+  border: none !important;
+  background-color: transparent !important;
+}
+
+
+/* === native vertical tabs: match the Sidebery look ===================== */
+
+/* row metrics: 30px rows, 4px gaps, 5px radius (as in sidebery.css) */
+#vertical-tabs .tabbrowser-tab {
+  /* native rows carry their own block margin (--tab-block-margin),
+     so don't add another one on top */
+  --tab-block-margin: 0px;
+  min-height: 30px !important;
+  margin-block: 0 !important;
+  /* vertical mode adds padding-block: 3px 2px on each tab - that's the gap */
+  padding-block: 0 !important;
+}
+
+#vertical-tabs .tabbrowser-tab .tab-background {
+  position: relative !important;
+  border-radius: 5px !important;
+}
+
+#vertical-tabs .tab-label {
+  font-size: 14px !important;
+}
+
+/* keep the title clear of the indicator zone */
+#vertical-tabs .tabbrowser-tab .tab-content {
+  padding-inline-end: 14px !important;
+}
+
+/* container indicator: 3x13px pill on the right with a 25% halo */
+#vertical-tabs .tabbrowser-tab .tab-context-line {
+  position: absolute !important;
+  top: 50% !important;
+  right: 5px !important;
+  left: unset !important;
+  transform: translateY(-50%);
+  width: 3px !important;
+  height: 13px !important;
+  margin: 0 !important;
+  border-radius: 3px !important;
+  background-color: var(--identity-tab-color) !important;
+  box-shadow: 0 0 0 2px
+    color-mix(in srgb, var(--identity-tab-color) 25%, transparent);
+}
+
+/* active tab: translucent container tint + ring with a 4px left bar */
+#vertical-tabs .tabbrowser-tab[selected] .tab-background {
+  background: color-mix(
+    in srgb,
+    var(--identity-tab-color, currentColor) 16%,
+    transparent
+  ) !important;
+  box-shadow:
+    0 1px 4px -1px rgba(0, 0, 0, 0.28),
+    inset 0 0 0 1px
+      var(--identity-tab-color, color-mix(in srgb, currentColor 70%, transparent)),
+    inset 4px 0 0 0
+      var(--identity-tab-color, color-mix(in srgb, currentColor 70%, transparent)) !important;
+}
+
+/* the ring carries the color on the active tab - hide its pill */
+#vertical-tabs .tabbrowser-tab[selected] .tab-context-line {
+  display: none !important;
+}
+
+
+/* === findbar: floating, as in ShyFox, fixed for Firefox 155+ ============= */
+/* FF 155 made .browserContainer a grid; a findbar without an explicit grid
+   placement lands in an implicit row off-screen. Pinning it to the whole grid
+   gives position:absolute a sane containing block again.
+   Moved here from browser/misc.css so the ShyFox files stay untouched. */
+.browserContainer > findbar {
+  grid-row: 1 / -1 !important;
+  grid-column: 1 / -1 !important;
+
+  background-image: none !important;
+  border: none !important;
+  border-radius: var(--uc-radius) !important;
+  background-color: var(--uc-bg-tran) !important;
+  @media not -moz-pref("uc.tweak.no-blur") {
+    backdrop-filter: blur(var(--uc-blur-radius)) !important;
+  }
+
+  position: absolute !important;
+  left: var(--uc-small-floating-margin) !important;
+  right: var(--uc-small-floating-margin) !important;
+  width: auto !important;
+
+  .findbar-textbox {
+    border-radius: var(--uc-radius) !important;
+  }
+
+  .findbar-container {
+    width: fit-content !important;
+  }
+
+  @media not -moz-pref("uc.tweak.findbar.bottom") {
+    top: var(--uc-small-floating-margin) !important;
+  }
+  @media -moz-pref("uc.tweak.findbar.bottom") {
+    bottom: var(--uc-small-floating-margin) !important;
+  }
+}

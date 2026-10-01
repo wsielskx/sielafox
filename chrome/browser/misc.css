@@ -74,37 +74,6 @@ splitter.devtools-horizontal-splitter {
   margin: var(--uc-content-margin) !important;
 }
 
-/* findbar thingy */
-.browserContainer > findbar {
-  background-image: none !important;
-  border: none !important;
-  border-radius: var(--uc-radius) !important;
-  background-color: var(--uc-bg-tran) !important;
-  @media not -moz-pref( "uc.tweak.no-blur") {
-    backdrop-filter: blur(var(--uc-blur-radius)) !important;
-  }
-
-  position: absolute !important;
-  left: var(--uc-small-floating-margin) !important;
-  right: var(--uc-small-floating-margin) !important;
-  width: auto !important;
-
-  .findbar-textbox {
-    border-radius: var(--uc-radius) !important;
-  }
-  
-  .findbar-container {
-    width: fit-content !important;
-  }
-
-  @media not -moz-pref( "uc.tweak.findbar.bottom") {
-    top: var(--uc-small-floating-margin) !important;
-  }
-  @media -moz-pref( "uc.tweak.findbar.bottom") {
-    bottom: var(--uc-small-floating-margin) !important;
-  }
-}
-
 /* link thingy when hovering over url */
 #statuspanel {
   bottom: var(--uc-small-floating-margin) !important;
