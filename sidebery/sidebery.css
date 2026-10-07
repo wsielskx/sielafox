@@ -42,18 +42,18 @@
   }
   
   /* === TABS === */
+  /* Keep Sidebery's own spacing model: the gap between rows is the tab's
+     padding-bottom = --tabs-margin, and drag&drop subtracts --tabs-margin
+     from each row's offsetHeight. Moving the gap into an outer margin
+     (margin: 2px 0; padding-bottom: 0) made the drop targets land on the
+     wrong row. Full width: no horizontal margin. */
+  #root.root {
+    --tabs-margin: 4px;
+  }
   .Tab {
-    margin: 2px 0;
+    margin: 0;
     width: 100%;
     border-radius: 3px;
-    padding-bottom: 0;
-  }
-  
-  /* last row's bottom margin overflows the scroll container by 1px
-     and wakes up a phantom scrollbar */
-  .Tab:last-child,
-  .tab-wrapper:last-child .Tab {
-    margin-bottom: 0;
   }
   
   

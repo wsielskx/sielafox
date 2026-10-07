@@ -1,4 +1,7 @@
-#urlbar:not([breakout-extend]) {
+/* centred placeholder/URL when idle; left-aligned as soon as the bar is
+   focused or its dropdown is open. [breakout-extend] alone is not set on
+   every platform/version (Windows kept the text centred while typing). */
+#urlbar:not([breakout-extend], [focused], [open]) {
     & .urlbar-input-container,
     & #urlbar-input-container {
       text-align: center !important;
