@@ -10,6 +10,15 @@
       }
     }
   }
+/* ...and force start alignment while active. Same specificity as the
+   centring rules in browser/urlbar.css, loaded later, so it wins on every
+   platform even when uc.tweak.urlbar.not-floating is not set. */
+#urlbar:is([breakout-extend], [focused], [open]) .urlbar-input-container,
+#urlbar:is([breakout-extend], [focused], [open]) #urlbar-input-container,
+#urlbar:is([breakout-extend], [focused], [open]) .urlbar-input-box,
+#urlbar:is([breakout-extend], [focused], [open]) .urlbar-input {
+  text-align: start !important;
+}
 
 /* sidebar: no header ("Sidebery" + close btn), no borders - native look */
 #sidebar-header,
